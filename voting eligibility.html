@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Eligibility Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-image: url('https://t3.ftcdn.net/jpg/07/39/16/96/360_F_739169671_bhAnYf1NMn8WGUULP6DxlcyyS6MuCWUn.jpg');
+            background-size: 400px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(114, 6, 6, 0.1);
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #222f3d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0673e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Voting Eligibility Form</h2>
+        <form id="eligibilityForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="citizenship"><i>"Are you a citizen of india?"</i></label>
+            <label for="citizenship"><i>people who are living in india has the ability to vote</i>
+            <select id="citizenship" name="citizenship" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <button type="button" onclick="checkEligibility()">Check Eligibility</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkEligibility() {
+            var age = document.getElementById("age").value;
+            var citizenship = document.getElementById("citizenship").value;
+            var result = document.getElementById("result");
+
+            if (age >= 18 && citizenship === "yes") {
+                result.innerHTML = "You are eligible to vote.";
+                result.style.color = "green";
+            } else {
+                result.innerHTML = "You are not eligible to vote.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
